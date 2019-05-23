@@ -1,0 +1,32 @@
+export default {
+    'zh-CN': {
+        appName: '小程序管理后台',
+        author: 'coral',
+        power: '小程序管理后台',
+        home: '首页',
+        switchLangTitle: '切换语言',
+        international: '多语言切换',
+        userCenter: '个人中心',
+        changePass: '修改密码',
+        logout: '退出登录',
+        tagOption: '标签选项',
+        closeAll: '关闭全部',
+        closeOthers: '关闭其他',
+        tip: '注：标注',
+    },
+    'en-US': {
+        appName: '小程序管理后台',
+        author: 'coral',
+        power: '小程序管理后台',
+        home: 'home',
+        switchLangTitle: 'Switch Lang',
+        international: 'Switch Lang',
+        userCenter: 'Account Center',
+        changePass: 'Change Pass',
+        logout: 'Logout',
+        tagOption: 'Tag Options',
+        closeAll: 'Close All',
+        closeOthers: 'Close Others',
+        tip: 'Note: notes.',
+    }
+};
