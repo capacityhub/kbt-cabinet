@@ -3,68 +3,110 @@
 </style>
 
 <template>
-  <div class="main" :class="{'main-hide-text': shrink}">
-    <div class="sidebar-menu-con menu-bar" :style="{width: shrink?'60px':'220px', overflow: shrink ? 'visible' : 'auto'}">
-      <shrinkable-menu :shrink="shrink" @on-change="handleSubmenuChange" :theme="menuTheme" :before-push="beforePush" :open-names="openedSubmenuArr" :menu-list="menuList">
-        <div slot="top" class="logo-con">
-          <!--<img v-show="!shrink" src="../assets/logo.png" key="max-logo" />-->
-          <!--<img v-show="shrink" src="../assets/logo-min.png" key="min-logo" />-->
-        </div>
-      </shrinkable-menu>
-    </div>
-    <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'220px'}">
-      <div class="main-header">
-        <div class="navicon-con">
-          <Button :style="{transform: 'rotateZ(' + (this.shrink ? '-90' : '0') + 'deg)'}" type="text" @click="toggleClick">
-                          <Icon type="md-menu" size="32"></Icon>
-                      </Button>
-        </div>
+  <div>
+    <div class="header">
+      <div class="navicon-con">
+        <Button :style="{transform: 'rotateZ(' + (this.shrink ? '-90' : '0') + 'deg)'}" type="text" @click="toggleClick">
+          <Icon type="md-menu" size="32"></Icon>
+
+        </Button>
+
         <div class="header-middle-con">
-          <div class="main-breadcrumb">
-            <breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav>
-          </div>
+          <el-menu
+                  mode="horizontal"
+                  active-text-color="#ffd04b">
+            <el-menu-item index="1">处理中心</el-menu-item>
+            <el-submenu index="2">
+              <template slot="title">自动化测试</template>
+              <el-menu-item index="2-1">选项1</el-menu-item>
+              <el-menu-item index="2-2">选项2</el-menu-item>
+              <el-menu-item index="2-3">选项3</el-menu-item>
+            </el-submenu>
+            <el-submenu index="3">
+              <template slot="title">融合通信</template>
+              <el-menu-item index="3-1">选项1</el-menu-item>
+              <el-menu-item index="3-2">选项2</el-menu-item>
+              <el-menu-item index="3-3">选项3</el-menu-item>
+            </el-submenu>
+            <el-submenu index="4">
+              <template slot="title">小程序</template>
+              <el-menu-item index="4-1">选项1</el-menu-item>
+              <el-menu-item index="4-2">选项2</el-menu-item>
+              <el-menu-item index="4-3">选项3</el-menu-item>
+            </el-submenu>
+            <el-submenu index="5">
+              <template slot="title">其他</template>
+              <el-menu-item index="5-1">选项1</el-menu-item>
+              <el-menu-item index="5-2">选项2</el-menu-item>
+              <el-menu-item index="5-3">选项3</el-menu-item>
+            </el-submenu>
+            <el-menu-item index="6"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+          </el-menu>
         </div>
-        <div class="header-avator-con">
-          <full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>
-          <Dropdown @on-click="handleLanDropdown" class="options">
-            <Icon type="md-globe" :size="24" class="language"></Icon>
-            <DropdownMenu slot="list">
-              <DropdownItem name="zh-CN">中文</DropdownItem>
-              <DropdownItem name="en-US">English</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <lock-screen></lock-screen>
-          <message-tip v-model="mesCount"></message-tip>
-          <div class="user-dropdown-menu-con">
-            <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
-              <Dropdown transfer trigger="hover" @on-click="handleClickUserDropdown">
-                <a href="javascript:void(0)">
-                  <span class="main-user-name">{{ username }}</span>
-                  <Icon type="md-arrow-dropdown" />
-                  <Avatar :src="avatarPath" style="background: #619fe7;margin-left: 10px;"></Avatar>
-                </a>
-                <DropdownMenu slot="list">
-                  <DropdownItem name="ownSpace">{{ $t('userCenter') }}</DropdownItem>
-                  <DropdownItem name="changePass">{{ $t('changePass') }}</DropdownItem>
-                  <DropdownItem name="loginout" divided>{{ $t('logout') }}</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </Row>
-          </div>
-        </div>
+
+
       </div>
-      <div class="tags-con">
-        <tags-page-opened :pageTagsList="pageTagsList"></tags-page-opened>
+
+
+
+      <div class="header-avator-con">
+
+
+        <full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>
+        <Dropdown @on-click="handleLanDropdown" class="options">
+          <Icon type="md-globe" :size="24" class="language"></Icon>
+          <DropdownMenu slot="list">
+            <DropdownItem name="zh-CN">中文</DropdownItem>
+            <DropdownItem name="en-US">English</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+        <lock-screen></lock-screen>
+        <message-tip v-model="mesCount"></message-tip>
+        <div class="user-dropdown-menu-con">
+          <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
+            <Dropdown transfer trigger="hover" @on-click="handleClickUserDropdown">
+              <a href="javascript:void(0)">
+                <span class="main-user-name">{{ username }}</span>
+                <Icon type="md-arrow-dropdown" />
+                <Avatar :src="avatarPath" style="background: #619fe7;margin-left: 10px;"></Avatar>
+              </a>
+              <DropdownMenu slot="list">
+                <DropdownItem name="ownSpace">{{ $t('userCenter') }}</DropdownItem>
+                <DropdownItem name="changePass">{{ $t('changePass') }}</DropdownItem>
+                <DropdownItem name="loginout" divided>{{ $t('logout') }}</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </Row>
+        </div>
       </div>
     </div>
-    <div class="single-page-con" :style="{left: shrink?'60px':'220px'}">
-      <div class="single-page">
-        <keep-alive :include="cachePage">
-          <router-view></router-view>
-        </keep-alive>
+
+    <div class="main" :class="{'main-hide-text': shrink}">
+
+      <div class="sidebar-menu-con menu-bar" :style="{width: shrink?'60px':'220px', overflow: shrink ? 'visible' : 'auto'}">
+        <shrinkable-menu :shrink="shrink" @on-change="handleSubmenuChange" :theme="menuTheme" :before-push="beforePush" :open-names="openedSubmenuArr" :menu-list="menuList">
+
+        </shrinkable-menu>
       </div>
+
+      <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'220px'}">
+
+        <div class="tags-con">
+          <tags-page-opened :pageTagsList="pageTagsList"></tags-page-opened>
+        </div>
+      </div>
+      <div class="single-page-con" :style="{left: shrink?'60px':'220px'}">
+        <div class="single-page">
+          <keep-alive :include="cachePage">
+            <router-view></router-view>
+          </keep-alive>
+        </div>
+      </div>
+
     </div>
+
   </div>
+
 </template>
 
 <script>
