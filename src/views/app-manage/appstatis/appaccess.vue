@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { getStore, setStore } from '@/libs/storage';
 import {getAppStatis} from "@/api/app";
 import Chart from '@/components/Charts/MixChart'
 
@@ -20,6 +21,9 @@ export default {
         yData: []
       },
     }
+  },
+  beforeCreate: function(){
+    setStore('extAccessToken', this.$route.query.extAccessToken);
   },
   mounted() {
     getAppStatis('').then(res => {

@@ -20,7 +20,6 @@ axios.interceptors.request.use(config => {
 // http response 拦截器
 axios.interceptors.response.use(response => {
     const data = response.data;
-
     // 根据返回的code值来做不同的处理(和后端约定)
     switch (data.code) {
         case 401:
@@ -58,18 +57,21 @@ axios.interceptors.response.use(response => {
 
 export const getRequest = (url, params) => {
     let accessToken = getStore('accessToken');
+    let extAccessToken = getStore('extAccessToken');
     return axios({
         method: 'get',
         url: `${base}${url}`,
         params: params,
         headers: {
-            'accessToken': accessToken
+            'accessToken': accessToken,
+            'extAccessToken': extAccessToken
         }
     });
 };
 
 export const postRequest = (url, params) => {
     let accessToken = getStore("accessToken");
+    let extAccessToken = getStore('extAccessToken');
     return axios({
         method: 'post',
         url: `${base}${url}`,
@@ -83,13 +85,15 @@ export const postRequest = (url, params) => {
         }],
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'accessToken': accessToken
+            'accessToken': accessToken,
+            'extAccessToken': extAccessToken
         }
     });
 };
 
 export const putRequest = (url, params) => {
     let accessToken = getStore("accessToken");
+    let extAccessToken = getStore('extAccessToken');
     return axios({
         method: 'put',
         url: `${base}${url}`,
@@ -103,31 +107,36 @@ export const putRequest = (url, params) => {
         }],
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'accessToken': accessToken
+            'accessToken': accessToken,
+            'extAccessToken': extAccessToken
         }
     });
 };
 
 export const deleteRequest = (url, params) => {
     let accessToken = getStore('accessToken');
+    let extAccessToken = getStore('extAccessToken');
     return axios({
         method: 'delete',
         url: `${base}${url}`,
         params: params,
         headers: {
-            'accessToken': accessToken
+            'accessToken': accessToken,
+            'extAccessToken': extAccessToken
         }
     });
 };
 
 export const uploadFileRequest = (url, params) => {
     let accessToken = getStore('accessToken');
+    let extAccessToken = getStore('extAccessToken');
     return axios({
         method: 'post',
         url: `${base}${url}`,
         params: params,
         headers: {
-            'accessToken': accessToken
+            'accessToken': accessToken,
+            'extAccessToken': extAccessToken
         }
     });
 };

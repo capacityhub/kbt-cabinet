@@ -29,18 +29,24 @@ router.beforeEach((to, from, next) => {
     } else if (Cookies.get('locking') === '0' && to.name === 'locking') {
         next(false);
     } else {
-        if (!Cookies.get('userInfo') && to.name !== 'login' && to.name !== 'regist' && to.name !== 'regist-result' && to.name !== 'relate') { // 判断是否已经登录且前往的页面不是登录页
-            next({
-                name: 'login'
-            });
-        } else if (Cookies.get('userInfo') && to.name === 'login') {
-            // 判断是否已经登录且前往的是登录页
-            Util.title();
-            next({
-                name: 'home_index'
-            });
-        } else {
+        console.log("", to.fullPath)
+        if ((to.fullPath).indexOf("extAccessToken") > -1){
             Util.toDefaultPage([...routers], to.name, router, next);
+        } else {
+            if (!Cookies.get('userInfo') && to.name !== 'login' && to.name !== 'regist' && to.name !== 'regist-result' && to.name !== 'relate') {
+                // 判断是否已经登录且前往的页面不是登录页
+                next({
+                    name: 'login'
+                });
+            } else if (Cookies.get('userInfo') && to.name === 'login') {
+                // 判断是否已经登录且前往的是登录页
+                Util.title();
+                next({
+                    name: 'home_index'
+                });
+            } else {
+                Util.toDefaultPage([...routers], to.name, router, next);
+            }
         }
     }
 });

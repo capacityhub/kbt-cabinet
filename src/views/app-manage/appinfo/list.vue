@@ -102,6 +102,7 @@
 </template>
 
 <script>
+    import { getStore, setStore } from '@/libs/storage';
     import { mapState,mapActions,mapMutations } from 'vuex';
     import AppList from '@/views/view-components/common/app-list';
     import AppAdd from '@/views/app-manage/appinfo/add';
@@ -135,8 +136,12 @@
                 searchResults:[],
             }
         },
+        beforeCreate: function(){
+            setStore('extAccessToken', this.$route.query.extAccessToken);
+        },
         created: function () {
             this.getList();
+
         },
         computed: {
             ...mapState({

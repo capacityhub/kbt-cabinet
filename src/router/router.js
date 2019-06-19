@@ -1,5 +1,4 @@
 import Main from '@/views/Main.vue';
-import { staticRouter } from './static';
 import { appManage } from './app';
 import VueRouter from 'vue-router'
 
@@ -91,7 +90,6 @@ export const routers = [
     otherRouter,
     locking,
     ...appRouter,
-    ...staticRouter,
     page500,
     page403,
     ...appManage

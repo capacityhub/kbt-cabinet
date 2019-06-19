@@ -25,9 +25,17 @@ const appDetailRouter = {
     component: () => import('@/views/app-manage/appinfo/detail.vue')
 };
 
+const appStatis = {
+    path:'/application/statis',
+    name: 'application',
+    component: () => import('@/views/app-manage/appstatis/appaccess.vue'),
+};
+
+
 export const appManage = [
     appAddRouter,
     appManageRouter,
     appUpdateRouter,
-    appDetailRouter
+    appDetailRouter,
+    appStatis
 ];

@@ -83,19 +83,19 @@
 
     <div class="main" :class="{'main-hide-text': shrink}">
 
-      <div class="sidebar-menu-con menu-bar" :style="{width: shrink?'60px':'220px', overflow: shrink ? 'visible' : 'auto'}">
+      <div class="sidebar-menu-con menu-bar" :style="{width: shrink?'0px':'220px', overflow: shrink ? 'visible' : 'auto'}">
         <shrinkable-menu :shrink="shrink" @on-change="handleSubmenuChange" :theme="menuTheme" :before-push="beforePush" :open-names="openedSubmenuArr" :menu-list="menuList">
 
         </shrinkable-menu>
       </div>
 
-      <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'220px'}">
+      <div class="main-header-con" :style="{paddingLeft: shrink?'0px':'220px'}">
 
         <div class="tags-con">
           <tags-page-opened :pageTagsList="pageTagsList"></tags-page-opened>
         </div>
       </div>
-      <div class="single-page-con" :style="{left: shrink?'60px':'220px'}">
+      <div class="single-page-con" :style="{left: shrink?'0px':'220px'}">
         <div class="single-page">
           <keep-alive :include="cachePage">
             <router-view></router-view>

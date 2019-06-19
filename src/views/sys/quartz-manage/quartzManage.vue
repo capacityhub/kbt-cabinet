@@ -53,7 +53,7 @@
         <FormItem label="任务类名" prop="jobClassName">
           <Input
             v-model="form.jobClassName"
-            placeholder="例如 com.coral.kbs.admin.quartz.jobs.Job"
+            placeholder="例如 com.coral.mini.program.admin.quartz.jobs.Job"
             clearable
           />
         </FormItem>
